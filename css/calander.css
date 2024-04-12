@@ -75,9 +75,10 @@ body {
 	font-size: 30px;
 	padding: 20px;
 	border-radius: 10px;
+	list-style: none;
 }
 
-.date-inp.options option {
+.date-inp .options .option {
 	height: 40px;
 	display: flex;
 	align-items: center;
@@ -88,13 +89,17 @@ body {
 	cursor: pointer;
 	transition: all 0.3s;
 }
-.date-inp .options option:hover {
+.date-inp .options .option:hover, .active {
 	background-color: rgba(255, 255, 255, .2);
 	transform: scale(1.1);
 }
 
 #year {
 	width: 6ch;
+	border: 1px solid transparent;
+}
+#year:focus {
+	border: 1px solid;
 }
 
 #month {

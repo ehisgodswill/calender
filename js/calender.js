@@ -18,18 +18,22 @@ const yearId = document.getElementById("year");
 const optionsId = document.querySelector('.date-inp .options');
 
 for (let i = 0; i < Months.length; i++) {
-    optionsId.innerHTML += `<option class="option" onclick="changeMonth(${i})">${Months[i]}</option>`;
+    optionsId.innerHTML += `<li class="option" onclick="changeMonth(${i})">${Months[i]}</li>`;
 }
 
 monthId.onclick = ()=> {
     optionsId.style.display = 'inline-block';
     // document.querySelector('.container').onclick = ()=> {optionsId.style.display = 'none'};
 }
+yearId.onchange = (e)=>changeYear(e.target.value);
 
+function changeYear(value) {
+    displayDates(value, monthId.value + 1);
+}
 
 function changeMonth(value) {
     optionsId.style.display = 'none';
-    document.querySelector('.container').onclick = ()=> {};
+    // document.querySelector('.container').onclick = ()=> {};
     displayDates(yearId.value, value + 1);
 }
 
@@ -103,6 +107,15 @@ function displayDates(year, month) {
         }
         days.innerHTML += `<div class="day${isCurrent ? dates[i] === today && month === date.getMonth() && year == date.getFullYear()?" today": "" : " prev"}">${dates[i]}</div>`
     }
+    const array = optionsId.children;
+    for (let i = 0; i < array.length; i++) {
+        array[i].className = array[i].className.replace(" active", "")
+        if (i === month) {
+            array[i].className += ' active'
+        }
+        
+    };
     monthId.innerHTML = Months[month];
+    monthId.value = month;
     yearId.value = year;
 } displayDates();

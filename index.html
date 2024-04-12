@@ -15,9 +15,9 @@
                 <div class="date">
                     <div class="date-inp">
                         <span id="month"></span>
-                        <div class="options"></div>
+                        <ul class="options"></ul>
                     </div>
-                    <input type="number" max="3000" min="1000" class="date-inp" id="year">
+                    <input type="number" max="3000" min="1000" class="date-inp" id="year" onchange="(e)=>changeYear(e.target.value)">
                 </div>
                 <div class="btns">
                     <div class="btn today-btn" id="today-btn" onclick="displayDates()">&#128197;
